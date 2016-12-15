@@ -11,9 +11,7 @@ Stack.prototype = {
     var popped = this[this.sizeOfStack];
     delete this[this.sizeOfStack];
     if (this.sizeOfStack > 0) {
-
       this.sizeOfStack--;
-
     }
     return popped;
   },
