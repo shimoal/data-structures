@@ -20,14 +20,15 @@ treeMethods.contains = function(target, node) {
   if (node.value === target) {
     return true;
   } 
+  
+
   if (node.children.length > 0) {
     var result = false;
     _.each(node.children, function(child) {
-      if (treeMethods.contains(target, child)) {
+      if (node.contains(target, child)) {
         result = true;
       }
     });
-
   } 
 
   return result;

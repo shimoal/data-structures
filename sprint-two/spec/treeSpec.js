@@ -22,6 +22,7 @@ describe('tree', function() {
   });
 
   it('should return false for a value that was not added', function() {
+    debugger;
     tree.addChild(5);
     expect(tree.contains(6)).to.equal(false);
   });
@@ -39,6 +40,28 @@ describe('tree', function() {
     tree.children[1].addChild(8);
     expect(tree.contains(7)).to.equal(true);
     expect(tree.contains(8)).to.equal(true);
+  });
+
+  it('should be able to add additional children to the same tree', function() {
+    tree.addChild(2);
+    tree.children[0].addChild(3);
+    tree.children[0].addChild(4);
+    tree.addChild(9);
+    tree.children[1].addChild(10);
+    tree.children[1].addChild(11);
+    expect(tree.contains(11)).to.equal(true);
+  });
+
+  it('should be able to call contains on children', function() {
+    tree.addChild(2);
+    tree.children[0].addChild(3);
+    tree.children[0].addChild(4);
+    tree.addChild(9);
+    tree.children[1].addChild(10);
+    tree.children[1].addChild(11);
+    expect(tree.children[1].contains(11)).to.equal(true);
+    expect(tree.children[1].contains(10)).to.equal(true);
+    expect(tree.children[1].contains(12)).to.equal(false);
   });
 
 });
