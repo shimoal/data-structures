@@ -27,17 +27,17 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
-    var findTarget = function(node) {
-      node = node || list.head;
+
+    var node = list.head;
+
+    while (node) {
       if (node.value === target) {
         return true;
       }
-      if (node.next === null) {
-        return false;
-      }
-      return findTarget(node.next);
-    };
-    return findTarget();
+      node = node.next;
+    }
+
+    return false;
   };
 
   return list;
