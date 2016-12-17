@@ -52,4 +52,19 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+  it('should only remove one value at a time', function() {
+    linkedList.addToTail(7);
+    linkedList.addToTail(7);
+    linkedList.removeHead();
+    expect(linkedList.contains(7)).to.equal(true);
+  });
+
+  it('should revert back to initialized .head and .tail values when emptied', function() {
+    linkedList.addToTail(8);
+    linkedList.addToTail(9);
+    linkedList.removeHead();
+    linkedList.removeHead();
+    expect(linkedList.head).to.equal(null);
+    expect(linkedList.tail).to.equal(null);
+  });
 });
