@@ -13,13 +13,13 @@ setPrototype.add = function(item) {
 };
 
 setPrototype.contains = function(item) {
-  var contains = false;
+  var containsValue = false;
   _.each(this._storage, function(value) {
     if (value === item) {
-      contains = true;
+      containsValue = true;
     }
   });
-  return contains;
+  return containsValue;
 };
 
 setPrototype.remove = function(item) {
