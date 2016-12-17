@@ -2,10 +2,8 @@ var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
 
-  // your code here
   newTree.children = []; 
   _.extend(newTree, treeMethods);
-
   return newTree;
 };
 
@@ -16,22 +14,18 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target, node) {
-  node = node || this;
-  if (node.value === target) {
+
+  if (this.value === target) { 
     return true;
   } 
   
+  for (var i = 0; i < this.children.length; i++) { 
+    if (this.children[i].contains(target)) { 
+      return true;
+    }
+  }
 
-  if (node.children.length > 0) {
-    var result = false;
-    _.each(node.children, function(child) {
-      if (node.contains(target, child)) {
-        result = true;
-      }
-    });
-  } 
-
-  return result;
+  return false;
 
 };
 
