@@ -22,7 +22,7 @@ describe('tree', function() {
   });
 
   it('should return false for a value that was not added', function() {
-    debugger;
+
     tree.addChild(5);
     expect(tree.contains(6)).to.equal(false);
   });
