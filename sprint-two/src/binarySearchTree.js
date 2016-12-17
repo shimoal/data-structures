@@ -11,12 +11,14 @@ BinarySearchTree.prototype.insert = function(value) {
     } else {
       this.left.insert(value);
     }
-  } else if (value >= this.value) {
+  } else if (value > this.value) {
     if (this.right === null) {
       this.right = new BinarySearchTree(value);
     } else {
       this.right.insert(value);
     }
+  } else {
+    //value already exists in the tree
   }
 };
 
