@@ -5,15 +5,15 @@ var HashTable = function() {
 
 HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  if (!this._storage.get(index)) {
-    this._storage.set(index, []);
-  }
-  var bucket = this._storage.get(index);
+  var bucket = this._storage.get(index) || [];
+
   bucket.push([k, v]);
+  this._storage.set(index, bucket);
 };
 
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
+
   var bucket = this._storage.get(index);
   var value;
   _.each(bucket, function(tuple) {
@@ -27,6 +27,7 @@ HashTable.prototype.retrieve = function(k) {
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index);
+
   _.each(bucket, function(tuple, i) {
     if (tuple[0] === k) {
       bucket.splice(i, 1);
@@ -38,6 +39,11 @@ HashTable.prototype.remove = function(k) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+
+ HashTable.insert: O(n)
+ HashTable.retrieve: O(n)
+ HashTable.remove: O(n)
+  
  */
 
 
