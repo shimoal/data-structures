@@ -5,6 +5,11 @@ var BinarySearchTree = function(value) {
 };
 
 BinarySearchTree.prototype.insert = function(value) {
+  //no duplicate values in the tree
+  if (value === this.value) {
+    return;
+  }
+
   if (value < this.value) {
     if (this.left === null) {
       this.left = new BinarySearchTree(value);
@@ -17,9 +22,8 @@ BinarySearchTree.prototype.insert = function(value) {
     } else {
       this.right.insert(value);
     }
-  } else {
-    //value already exists in the tree
   }
+
 };
 
 BinarySearchTree.prototype.contains = function(value) {
@@ -50,7 +54,7 @@ BinarySearchTree.prototype.depthFirstLog = function(cb) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
- insert: O(log(n))
- contains: O(log(n))
+ insert: O(n)
+ contains: O(n)
  depthFirstLog: O(n)
  */
